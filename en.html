@@ -229,7 +229,23 @@
     <div class="sec-title">Meta Ads · reach</div>
     <div class="sec-h">Meta: the audience is reshuffling to other channels</div>
     <p class="sec-lead">Meta investment held steady (~$2.0K–$2.4K/mo). <b>Reach adjusted downward from February</b> (1.19M → 626K), in line with an audience concentrating in fewer channels and formats. Worth reviewing targeting and creative to follow that shift.</p>
-    <div class="card"><h3>Reach vs. investment · Meta Ads by month</h3><div class="csub">Bars = reach · Line = investment USD</div><div class="chart-box"><canvas id="chMeta"></canvas></div>
+    <div class="card"><h3>Reach vs. investment · Meta Ads by month</h3><div class="csub">Bars = reach · Line = investment USD</div>
+      <div style="display:flex;gap:20px;align-items:center;flex-wrap:wrap">
+        <div class="chart-box" style="flex:1 1 380px;min-width:300px;height:300px"><canvas id="chMeta"></canvas></div>
+        <div style="flex:1 1 230px;min-width:210px">
+          <div style="font-size:11px;text-transform:uppercase;letter-spacing:.5px;color:var(--muted);font-weight:700;margin-bottom:8px">Investment by month <span style="font-weight:500;text-transform:none">(the line)</span></div>
+          <table style="font-size:13px">
+            <thead><tr><th>Month</th><th class="num">Investment</th><th class="num">Reach</th></tr></thead>
+            <tbody>
+              <tr><td>January</td><td class="num">$2,014</td><td class="num">1.19M</td></tr>
+              <tr><td>February</td><td class="num">$2,201</td><td class="num">626K</td></tr>
+              <tr><td>March</td><td class="num">$2,415</td><td class="num">620K</td></tr>
+              <tr><td>April</td><td class="num">$2,426</td><td class="num">869K</td></tr>
+              <tr id="metaMayRow" style="display:none"><td>May</td><td class="num">$2,354</td><td class="num">1.13M</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
       <div style="display:flex;gap:14px;flex-wrap:wrap;margin-top:16px">
         <div style="flex:1 1 180px;background:var(--nfpa-soft);border-radius:9px;padding:13px 15px">
           <div style="font-size:11px;text-transform:uppercase;letter-spacing:.5px;color:var(--nfpa);font-weight:700;margin-bottom:4px">Cost per thousand people reached</div>
@@ -430,7 +446,7 @@ new Chart(chCmp,{type:'bar',data:{labels:D.cmp.camp,datasets:[
 const cM=new Chart(chMeta,{data:{labels:D.meses,datasets:[
   {type:'bar',label:'Reach',data:D.metaReach,backgroundColor:D.meses.map((m,i)=>i===1?NFPA:'rgba(200,16,46,.48)'),borderRadius:6,maxBarThickness:64,yAxisID:'y',order:2},
   {type:'line',label:'Investment',data:D.metaSpend,borderColor:INK,backgroundColor:INK,borderWidth:2.5,tension:.3,pointRadius:4,yAxisID:'y1',order:0}
-]},options:{plugins:{legend:{position:'bottom'},tooltip:{callbacks:{label:c=>c.dataset.label==='Investment'?'$'+c.parsed.y.toLocaleString('en-US'):c.parsed.y.toLocaleString('en-US')}}},
+]},options:{maintainAspectRatio:false,plugins:{legend:{position:'bottom'},tooltip:{callbacks:{label:c=>c.dataset.label==='Investment'?'$'+c.parsed.y.toLocaleString('en-US'):c.parsed.y.toLocaleString('en-US')}}},
   scales:{y:{position:'left',ticks:{callback:v=>(v/1000000).toFixed(1)+'M'}},y1:{position:'right',grid:{drawOnChartArea:false},min:0,ticks:{callback:v=>'$'+(v/1000).toFixed(1)+'K'}}}}});
 
 // 7. CPA 2025
@@ -463,6 +479,7 @@ function toggleMay(on){
   cM.update();
   document.getElementById('mayNote').style.display=on?'inline':'none';
   var mb=document.getElementById('mayMetaBox'); if(mb) mb.style.display=on?'block':'none';
+  var mr=document.getElementById('metaMayRow'); if(mr) mr.style.display=on?'table-row':'none';
 }
 </script>
 </body>

@@ -90,11 +90,17 @@
 </header>
 <div class="wrap">
 
-  <div style="display:flex;align-items:center;justify-content:flex-end;gap:12px;margin-top:18px;flex-wrap:wrap">
-    <span id="mayNote" style="display:none;font-size:12px;color:var(--warn);font-weight:600">Mostrando mayo (preliminar) · Google aún sin revenue · la vista para cliente es ene–abr</span>
-    <label style="display:inline-flex;align-items:center;gap:8px;font-size:12.5px;color:var(--muted);font-weight:600;cursor:pointer;background:#fff;border:1px solid var(--line);border-radius:20px;padding:7px 14px">
-      <input type="checkbox" id="chkMay" onchange="toggleMay(this.checked)" style="accent-color:var(--nfpa)"> Incluir mayo (uso interno)
-    </label>
+  <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:18px;flex-wrap:wrap">
+    <div style="display:inline-flex;align-items:center;gap:3px;background:#fff;border:1px solid var(--line);border-radius:20px;padding:3px;font-size:12.5px;font-weight:700">
+      <span style="background:var(--nfpa);color:#fff;border-radius:16px;padding:5px 13px">ES</span>
+      <a href="en.html" style="color:var(--muted);text-decoration:none;padding:5px 13px;border-radius:16px">EN</a>
+    </div>
+    <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+      <span id="mayNote" style="display:none;font-size:12px;color:var(--warn);font-weight:600">Mostrando mayo (preliminar) · Google aún sin revenue · la vista para cliente es ene–abr</span>
+      <label style="display:inline-flex;align-items:center;gap:8px;font-size:12.5px;color:var(--muted);font-weight:600;cursor:pointer;background:#fff;border:1px solid var(--line);border-radius:20px;padding:7px 14px">
+        <input type="checkbox" id="chkMay" onchange="toggleMay(this.checked)" style="accent-color:var(--nfpa)"> Incluir mayo (uso interno)
+      </label>
+    </div>
   </div>
 
   <!-- 1. RESUMEN -->
